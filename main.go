@@ -6,9 +6,11 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/spf13/viper"
 )
 
 func main() {
+	viper.SetDefault("PORT", "80")
 	r := mux.NewRouter()
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "/.")
@@ -17,6 +19,6 @@ func main() {
 		vars := mux.Vars(r)
 		fmt.Fprintf(w, "hello %s", vars["name"])
 	})
-	// http.Handle("/", r)
-	log.Fatal(http.ListenAndServe(":80", r))
+	log.Println("listening on :" + viper.GetString("PORT"))
+	log.Fatal(http.ListenAndServe(":"+viper.GetString("PORT"), r))
 }

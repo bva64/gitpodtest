@@ -7,6 +7,7 @@ services:
     environment:
       - GOPATH=/src/.gopath
       - GOCACHE=/src/.gocache
+      - PORT=80
     user: 33333:33333
     ports:
       - 8080:80

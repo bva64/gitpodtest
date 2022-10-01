@@ -16,3 +16,4 @@ mycli
 # vendor/
 .gocache
 mycli
+.gopath
