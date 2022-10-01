@@ -1,5 +1,7 @@
 .PHONY: mod tidy vendor build run reflex
 
+default: reflex
+
 mod: tidy vendor
 
 tidy:
