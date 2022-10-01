@@ -1,0 +1,17 @@
+services:
+  http:
+    image: golang:1.19.1
+    volumes:
+      - '.:/src'
+    working_dir: /src
+    environment:
+      - GOPATH=/src/.gopath
+      - GOCACHE=/src/.gocache
+    user: 33333:33333
+    ports:
+      - 8080:80
+    entrypoint: ["/bin/sh","-c"]
+    command:
+    - |
+      export PATH=/src/.gopath/bin:$$PATH
+      make reflex
